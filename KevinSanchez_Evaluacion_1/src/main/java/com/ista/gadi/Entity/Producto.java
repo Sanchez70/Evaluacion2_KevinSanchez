@@ -8,8 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.Digits;
 @Entity
 @Table(name="producto")
 public class Producto implements Serializable {
@@ -26,16 +24,10 @@ public class Producto implements Serializable {
 	private Long condigo;
 	@Column(length = 100) 
 	private String descripcion;
-	@DecimalMin(value = "0.01", inclusive = true)
-    @Digits(integer = 10,fraction = 2)
-	private Double precio;
+	private double precio;
 	private Integer cantidad;
-	@DecimalMin(value = "0.01", inclusive = true)
-    @Digits(integer = 10,fraction = 2)
-	private Double subtotal;
-	@DecimalMin(value = "0.01", inclusive = true)
-    @Digits(integer = 10,fraction = 2)
-	private Double total;
+	private double subtotal;
+	private double total;
 	public Long getCondigo() {
 		return condigo;
 	}

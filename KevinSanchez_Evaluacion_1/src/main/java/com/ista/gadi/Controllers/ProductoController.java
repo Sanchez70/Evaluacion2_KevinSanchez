@@ -56,7 +56,10 @@ public class ProductoController {
 		        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		    }
 		  
-		    
+		    String precioStr = String.valueOf(producto.getPrecio());
+		    if(!precioStr.matches("\\d+(\\.\\d{1,2})?")) {
+		      return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		    }
 		if(producto.getCantidad()>0 && producto.getPrecio() > 0) {
 			producto.setSubtotal(producto.getPrecio()*producto.getCantidad());
 			if(producto.getSubtotal()>50) {
